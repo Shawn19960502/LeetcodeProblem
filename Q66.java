@@ -31,3 +31,32 @@ class Solution {
         return res;
     }
 }
+class Solution {
+    public int[] plusOne(int[] digits) {
+        boolean flag = true;
+        for(int i = 0; i < digits.length; i++) {
+            if(digits[i] != 9) {
+                flag = false;
+                break;
+            }
+        }
+        if(flag) {
+            int[] result = new int[digits.length + 1];
+            result[0] = 1;
+            return result;
+        } else {
+            int[] result = new int[digits.length];
+            int carry = 1;
+            for(int i = digits.length - 1; i > -1; i--) {
+                result[i] = (digits[i] + carry) % 10;
+                if(digits[i] + carry >= 10) {
+                    carry = 1;
+                } else {
+                    carry = 0;
+                }
+            }
+            return result;
+        }
+        
+    }
+}
