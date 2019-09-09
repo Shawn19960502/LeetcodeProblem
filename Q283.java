@@ -1,3 +1,9 @@
+/*
+* @Author: Shawn Yang
+* @Date:   2019-09-06 17:36:19
+* @Last Modified by:   Shawn Yang
+* @Last Modified time: 2019-09-06 17:36:21
+*/
 class Solution {
     public void moveZeroes(int[] nums) {
     // two pointers;
@@ -18,5 +24,23 @@ class Solution {
             }
         }
         return;
+    }
+}
+class Solution {
+    public void moveZeroes(int[] nums) {
+    // two pointers;
+        if(nums == null || nums.length == 0) {
+            return;
+        }
+        int pointer = 0;
+        for(int num : nums) {
+            if(num != 0) {
+                nums[pointer] = num;
+                pointer += 1;
+            }
+        }
+        for(int i = pointer; i < nums.length; i++) {
+            nums[i] = 0;
+        }
     }
 }
