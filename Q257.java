@@ -2,7 +2,7 @@
 * @Author: Shawn Yang
 * @Date:   2019-09-12 03:09:11
 * @Last Modified by:   Shawn Yang
-* @Last Modified time: 2019-09-12 03:09:44
+* @Last Modified time: 2019-09-12 09:51:47
 */
 /**
  * Definition for a binary tree node.
@@ -59,4 +59,25 @@ class Solution {
         result = result.substring(0, result.length() - 2);
         results.add(result);
     }
+}
+/*************************More concise solution ************/
+class Solution {
+  public void construct_paths(TreeNode root, String path, LinkedList<String> paths) {
+      if(root != null) {
+              path += String.valueOf(root.val);
+    if(root.left == null && root.right == null) {
+        paths.add(path);
+    } else {
+        path += "->";
+        construct_paths(root.left, path, paths);
+        construct_paths(root.right, path, paths);
+    }
+      }
+  }
+
+  public List<String> binaryTreePaths(TreeNode root) {
+    LinkedList<String> paths = new LinkedList();
+    construct_paths(root, "", paths);
+    return paths;
+  }
 }
